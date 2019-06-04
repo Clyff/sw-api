@@ -30,7 +30,7 @@ $ source env/bin/activate
 $ pip install -r requirements.txt
 ```
 
-4. Start mongodb (if not already started at boo) and run the application:
+4. Start MongoDB (if not already started at boot) and run the application:
 ```sh
 $ sudo service mongod start
 $ python main.py
