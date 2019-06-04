@@ -13,20 +13,34 @@ def planets_get(action):
     Returns
     ------
     Response
-        JSON Response of the planets found. Or a message if couldn't find any.
+        JSON Response of the planets. Or a message.
     """
 
     actions = ['view', 'list']
 
     if (action in actions):
+        model = Planet()
+
+        # JSON Response of the planets. Or A message in case there is any.
         if (action == 'list'):
-            return planet_list()
+            result = model.list()
+
+            if (result is not None):
+                return result, 200
+
+            return "No Planets Stored", 200
+
+        # JSON Response of the planet. Or a message if not found.
         elif (action == 'view'):
             data = request.args
+            result = model.view(data)
 
-            return planet_view(data)
+            if (result is not None):
+                return result, 200
 
+            return "Planet not found", 404
 
+    # A message if route not allowed.
     return "Action {} not allowed".format(action), 405
 
 
@@ -37,112 +51,44 @@ def planets_post(action):
     Returns
     ------
     Response, None
-        JSON Response of the planets found. Or a message if couldn't find any.
+        JSON Response of the planets. Or a message.
     """
 
     actions = ['create', 'update', 'delete']
 
     if (action in actions):
+        model = Planet()
         data = request.form
 
+        # JSON Response of the planet created. Or a message in case of error.
         if (action == 'create'):
-            return planet_create(data)
+            result = model.create(data)
+
+            if (isinstance(result,str)):
+                return result, 400
+
+            return result, 200
+
+        # JSON Response of the planet updated. Or a message in case of error.
         elif (action == 'update'):
-            return planet_update(data)
+            result = model.update(data)
+
+            if (result is not None):
+                return result, 200
+
+            return "Planet {} not found".format(data.get("nome")), 404
+
+        # A message whether the deletion succeed or not.
         elif (action == 'delete'):
-            return planet_delete(data)
+            result = model.delete(data)
 
+            if (result is not None):
+                return result, 200
+
+            return "Planet {} not found".format(data.get("nome")), 404
+
+    # A message if route not allowed.
     return "Action {} not allowed".format(action), 405
-
-
-def planet_list():
-    """Lists all Planets stored in the collection.
-
-    Returns
-    ------
-    Response
-        JSON Response of the planets. Or A message in case there is any.
-    """
-
-    model = Planet()
-    result = model.list()
-
-    if (result is not None):
-        return result, 200
-
-    return "No Planets Stored", 200
-
-
-def planet_view(data):
-    """Lists all Planets stored in the collection.
-
-    Returns
-    ------
-    Response
-        JSON Response of the planet. Or a message if not found.
-    """
-
-    model = Planet()
-    result = model.view(data)
-
-    if (result is not None):
-        return result, 200
-
-    return "Planet not found", 404
-
-
-def planet_create(data):
-    """Lists all Planets stored in the collection.
-
-    Returns
-    ------
-    Response
-        JSON Response of the planet created. Or a message in case of error.
-    """
-
-    model = Planet()
-    result = model.create(data)
-
-    if (isinstance(result,str)):
-        return result, 400
-
-    return result, 200
-
-
-def planet_update(data):
-    """Lists all Planets stored in the collection.
-
-    Returns
-    ------
-    Response
-        JSON Response of the planet updated. Or a message in case of error.
-    """
-
-    model = Planet()
-    result = model.update(data)
-
-    if (result is not None):
-        return result, 200
-
-    return "Planet {} not found".format(data.get("nome")), 404
-
-
-def planet_delete(data):
-    """Lists all Planets stored in the collection.
-
-    Returns
-    ------
-    Response
-        A message if the deletion succeeds.
-    """
-
-    model = Planet()
-    result = model.delete(data)
-
-    if (result is not None):
-        return result, 200
-
-    return "Planet {} not found".format(data.get("nome")), 404
 
 
 serve(app, listen='0.0.0.0:5000')
