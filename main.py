@@ -8,6 +8,14 @@ app = Flask(__name__)
 
 @app.route("/planets/<string:action>", methods=['GET'])
 def planets_get(action):
+    """Handles the access via GET Methods.
+
+    Returns
+    ------
+    Response
+        JSON Response of the planets found. Or None if could not find any.
+    """
+
     actions = ['view', 'list']
 
     if (action in actions):
@@ -24,6 +32,14 @@ def planets_get(action):
 
 @app.route("/planets/<string:action>", methods=['POST'])
 def planets_post(action):
+    """Handles the access via POST Methods.
+
+    Returns
+    ------
+    Response, None
+        JSON Response of the planets found. Or None if could not find any.
+    """
+
     actions = ['create', 'update', 'delete']
 
     if (action in actions):
@@ -40,6 +56,14 @@ def planets_post(action):
 
 
 def planet_list():
+    """Lists all Planets stored in the collection.
+
+    Returns
+    ------
+    Response
+        JSON Response of the planets. Or A message in case there is any.
+    """
+
     model = Planet()
     result = model.list()
 
@@ -50,6 +74,14 @@ def planet_list():
 
 
 def planet_view(data):
+    """Lists all Planets stored in the collection.
+
+    Returns
+    ------
+    Response
+        JSON Response of the planet. Or A message if nto found.
+    """
+
     model = Planet()
     result = model.view(data)
 
@@ -60,6 +92,14 @@ def planet_view(data):
 
 
 def planet_create(data):
+    """Lists all Planets stored in the collection.
+
+    Returns
+    ------
+    Response
+        JSON Response of the planet created. Or A message in case of error.
+    """
+
     model = Planet()
     result = model.create(data)
 
@@ -70,6 +110,14 @@ def planet_create(data):
 
 
 def planet_update(data):
+    """Lists all Planets stored in the collection.
+
+    Returns
+    ------
+    Response
+        JSON Response of the planet updated. Or A message in case of error.
+    """
+
     model = Planet()
     result = model.update(data)
 
@@ -80,6 +128,14 @@ def planet_update(data):
 
 
 def planet_delete(data):
+    """Lists all Planets stored in the collection.
+
+    Returns
+    ------
+    Response
+        A message if the deletion succeeds.
+    """
+
     model = Planet()
     result = model.delete(data)
 

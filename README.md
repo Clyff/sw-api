@@ -45,3 +45,13 @@ The following routes ar avaliable (all under the port 5000):
 - **/planets/create**: Creates a Planet, if the name is avaliable, and return it. Avaliable POST parameters: `nome` (obrigatory), `clima` and `terreno`.
 - **/planets/update**: Updates a existing Planet and return it. Avaliable POST parameters: `nome` (obrigatory), `clima` and `terreno`.
 - **/planets/delete**: Deletes a specific Planet based on POST parameters. Avaliable POST parameters: `nome` (obrigatory).
+
+
+## Docs
+
+List of documentations used to create this application:
+
+[Flask](http://flask.pocoo.org/)
+[MongoDB](https://docs.mongodb.com/manual/)
+[PyMongo](https://api.mongodb.com/python/current/tutorial.html)
+[Documenting Python Code](https://realpython.com/documenting-python-code/)
