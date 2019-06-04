@@ -6,9 +6,7 @@ from src.client import Client
 
 class Planet():
     """
-    A class used to handle the MongoDB Collection 'planets'
-
-    ...
+    A class used to handle the MongoDB Collection 'planets'.
 
     Attributes
     ----------
@@ -48,7 +46,7 @@ class Planet():
         Returns
         ------
         Response, None
-            JSON Response of the planets found. Or None if could not find any.
+            JSON Response of the planets found. Or None if couldn't find any.
         """
 
         planets = []
@@ -80,7 +78,7 @@ class Planet():
         Returns
         ------
         Response, None
-            JSON Response of the planet found. Or None if could not find it.
+            JSON Response of the planet found. Or None if couldn't find it.
         """
 
         planet = self.check_planet_by_name(args.get("nome"))
@@ -145,7 +143,7 @@ class Planet():
         Returns
         ------
         Response, None
-            JSON Response of the planet updated. Or None if could not find it.
+            JSON Response of the planet updated. Or None if couldn't find it.
         """
 
         planet = self.check_planet_by_name(args.get("nome"))
@@ -207,7 +205,7 @@ class Planet():
         Returns
         ------
         Response, None
-            JSON Response of the planet found. Or None if could not find any.
+            JSON Response of the planet found. Or None if couldn't find any.
         """
 
         if (bool(nome and nome.strip() and nome is not None)):
@@ -227,7 +225,7 @@ class Planet():
         Returns
         ------
         Response, None
-            JSON Response of the planet found. Or None if could not find any.
+            JSON Response of the planet found. Or None if couldn't find any.
         """
 
         if (bool(ObjectId.is_valid(id) and id is not None)):
@@ -247,7 +245,7 @@ class Planet():
         Returns
         ------
         Response, None
-            JSON Response of the planet found. Or None if could not find any.
+            JSON Response of the planet found. Or None if couldn't find any.
         """
 
         for planet in self.collection.aggregate([
@@ -278,7 +276,7 @@ class Planet():
         Raises
         ------
         HTTPError
-            If the connection with swapi could not be stabilized.
+            If the connection with swapi couldn't be stabilized.
         """
 
         nome = urllib.parse.quote(str(nome), safe='')
