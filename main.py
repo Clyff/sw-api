@@ -13,7 +13,7 @@ def planets_get(action):
     Returns
     ------
     Response
-        JSON Response of the planets found. Or None if could not find any.
+        JSON Response of the planets found. Or a message if couldn't find any.
     """
 
     actions = ['view', 'list']
@@ -37,7 +37,7 @@ def planets_post(action):
     Returns
     ------
     Response, None
-        JSON Response of the planets found. Or None if could not find any.
+        JSON Response of the planets found. Or a message if couldn't find any.
     """
 
     actions = ['create', 'update', 'delete']
@@ -79,7 +79,7 @@ def planet_view(data):
     Returns
     ------
     Response
-        JSON Response of the planet. Or A message if nto found.
+        JSON Response of the planet. Or a message if not found.
     """
 
     model = Planet()
@@ -97,7 +97,7 @@ def planet_create(data):
     Returns
     ------
     Response
-        JSON Response of the planet created. Or A message in case of error.
+        JSON Response of the planet created. Or a message in case of error.
     """
 
     model = Planet()
@@ -115,7 +115,7 @@ def planet_update(data):
     Returns
     ------
     Response
-        JSON Response of the planet updated. Or A message in case of error.
+        JSON Response of the planet updated. Or a message in case of error.
     """
 
     model = Planet()
