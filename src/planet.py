@@ -56,6 +56,7 @@ class Planet():
         for planet in self.collection.aggregate([
             {"$project": {"_id": {"$toString": "$_id"}, "nome": "$nome", "clima": "$clima", "terreno": "$terreno"}}
         ]):
+            planet["filmes"] = self.get_film(planet["nome"])
             planets.append(planet)
 
         if (planets):
@@ -290,9 +291,9 @@ class Planet():
             if (planets["count"] > 0):
                 for planet in planets["results"]:
                     if (planet["name"] == nome):
-                        return planet["films"]
+                        return len(planet["films"])
 
-            return []
+            return 0
 
         else:
             myResponse.raise_for_status()
