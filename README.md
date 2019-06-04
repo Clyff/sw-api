@@ -51,7 +51,7 @@ The following routes ar avaliable (all under the port 5000):
 
 List of documentations used to create this application:
 
-[Flask](http://flask.pocoo.org/)
-[MongoDB](https://docs.mongodb.com/manual/)
-[PyMongo](https://api.mongodb.com/python/current/tutorial.html)
-[Documenting Python Code](https://realpython.com/documenting-python-code/)
+- [Flask](http://flask.pocoo.org/)
+- [MongoDB](https://docs.mongodb.com/manual/)
+- [PyMongo](https://api.mongodb.com/python/current/tutorial.html)
+- [Documenting Python Code](https://realpython.com/documenting-python-code/)
